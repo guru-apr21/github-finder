@@ -7,6 +7,7 @@ class App extends Component {
       <React.Fragment>
         <h1>Hello from Mosh</h1>
         <p>Let's put our hope in Brad and in his teaching techniques.</p>
+        <h2>This is for demonstration purpose.</h2>
       </React.Fragment>
     );
   }
