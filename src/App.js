@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div>
-      <h1>Hello from Mosh</h1>
-      <p>Let's put our hope in Brad and in his teaching techniques.</p>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <React.Fragment>
+        <h1>Hello from Mosh</h1>
+        <p>Let's put our hope in Brad and in his teaching techniques.</p>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
