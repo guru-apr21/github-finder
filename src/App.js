@@ -48,7 +48,7 @@ class App extends Component {
     });
   };
 
-  //Get details of users repos
+  //Get details of user's repos
   getUserRepos = async (username) => {
     this.setState({ loading: true });
 
