@@ -10,6 +10,16 @@ import {
   CLEAR_USERS,
 } from "../types";
 
+let githubCLientId;
+let githubClientSecret;
+
+if (process.env.NODE_ENV !== "production") {
+  githubCLientId = process.env.REACT_APP_GITHUB_CLIENT_ID;
+  githubClientSecret = process.env.REACT_APP_GITHUB_CLIENT_SECRET;
+} else {
+  githubCLientId = process.env.GITHUB_CLIENT_ID;
+  githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
+}
 const GithubState = (props) => {
   const initialState = {
     users: [],
@@ -27,7 +37,7 @@ const GithubState = (props) => {
     const {
       data: { items },
     } = await Axios.get(
-      `https://api.github.com/search/users?q=${text}&client_id=${process.env.GITHUB_FINDER_CLIENT_ID}&client_secret=${process.env.GITHUB_FINDER_CLIENT_SECRET}`
+      `https://api.github.com/search/users?q=${text}&client_id=${githubCLientId}&client_secret=${githubClientSecret}`
     );
 
     dispatch({
@@ -41,7 +51,7 @@ const GithubState = (props) => {
     setLoading();
 
     const { data } = await Axios.get(
-      `https://api.github.com/users/${username}?client_id=${process.env.GITHUB_FINDER_CLIENT_ID}&client_secret=${process.env.GITHUB_FINDER_CLIENT_SECRET}`
+      `https://api.github.com/users/${username}?client_id=${githubCLientId}&client_secret=${githubClientSecret}`
     );
 
     dispatch({
@@ -55,7 +65,7 @@ const GithubState = (props) => {
     setLoading();
 
     const { data } = await Axios.get(
-      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.GITHUB_FINDER_CLIENT_ID}&client_secret=${process.env.GITHUB_FINDER_CLIENT_SECRET}`
+      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${githubCLientId}&client_secret=${githubClientSecret}`
     );
 
     dispatch({
