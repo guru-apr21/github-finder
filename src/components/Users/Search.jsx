@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useContext } from "react";
+import GithubContext from "./../../context/github/GithubContext";
+import AlertContext from "./../../context/alert/AlertContext";
 
-const Search = ({ setAlert, onSearch, showClear, onClear }) => {
-  const [text, setText] = useState('');
+const Search = () => {
+  const [text, setText] = useState("");
+
+  const githubContext = useContext(GithubContext);
+
+  const alertContext = useContext(AlertContext);
+
+  const { searchUsers, onClear, users } = githubContext;
+
+  const showClear = users.length > 0 ? true : false;
 
   const onChange = (e) => setText(e.target.value);
 
@@ -10,10 +19,10 @@ const Search = ({ setAlert, onSearch, showClear, onClear }) => {
     e.preventDefault();
 
     if (!text) {
-      setAlert(' Please enter something', 'light');
+      alertContext.setAlert(" Please enter something", "light");
     } else {
-      onSearch(text);
-      setText('');
+      searchUsers(text);
+      setText("");
     }
   };
 
@@ -21,28 +30,21 @@ const Search = ({ setAlert, onSearch, showClear, onClear }) => {
     <div>
       <form onSubmit={onSubmit}>
         <input
-          type='text'
-          placeholder='Search users...'
-          name='text'
+          type="text"
+          placeholder="Search users..."
+          name="text"
           value={text}
           onChange={onChange}
         ></input>
-        <button className='btn btn-dark btn-block'>Search</button>
+        <button className="btn btn-dark btn-block">Search</button>
       </form>
       {showClear && (
-        <button className='btn btn-light btn-block my-1' onClick={onClear}>
+        <button className="btn btn-light btn-block my-1" onClick={onClear}>
           Clear
         </button>
       )}
     </div>
   );
-};
-
-Search.propTypes = {
-  onSearch: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
-  showClear: PropTypes.bool.isRequired,
-  setAlert: PropTypes.func.isRequired,
 };
 
 export default Search;

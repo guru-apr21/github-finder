@@ -1,19 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 
 const Navbar = ({ icon, title }) => {
   return (
-    <nav className='navbar bg-primary'>
+    <nav className="navbar bg-primary">
       <h1>
         <i className={icon}></i> {title}
       </h1>
       <ul>
         <li>
-          <NavLink to='/'>Home</NavLink>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to='/about'>About</NavLink>
+          <NavLink to="/about">About</NavLink>
         </li>
       </ul>
     </nav>
@@ -21,8 +21,8 @@ const Navbar = ({ icon, title }) => {
 };
 
 Navbar.defaultProps = {
-  title: 'Github Finder',
-  icon: 'fab fa-github',
+  title: "Github Finder",
+  icon: "fab fa-github",
 };
 
 Navbar.propTypes = {
