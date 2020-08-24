@@ -34,7 +34,7 @@ const User = ({ match }) => {
 
   return (
     <Fragment>
-      <Link to="/" target="_blank" className="btn btn-light">
+      <Link to="/" className="btn btn-light">
         Back To Search
       </Link>
       Hireable:{" "}
@@ -61,7 +61,12 @@ const User = ({ match }) => {
               <p>{bio}</p>
             </Fragment>
           )}
-          <a href={html_url} className="btn btn-dark my-1">
+          <a
+            href={html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-dark my-1"
+          >
             Visit Github profile
           </a>
           <ul>
